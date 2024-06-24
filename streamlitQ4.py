@@ -69,7 +69,6 @@ processed_input = preprocess_input(input_data)
 
 # Make prediction
 if st.button("Predict"):
-    input_data = preprocess_input(age,sex,cp)
     prediction = model.predict(processed_input)
     prediction_proba = model.predict_proba(processed_input)
     st.write(f"Prediction: {'Heart Disease' if prediction[0] else 'No Heart Disease'}")
