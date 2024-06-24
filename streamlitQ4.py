@@ -106,5 +106,5 @@ processed_input = preprocess_input(input_data)
 if st.button("Predict"):
     prediction = model.predict(processed_input)
     prediction_proba = model.predict_proba(processed_input)
-    st.write(f"Prediction: {'Heart Disease' if prediction[0] else 'No Heart Disease'}")
+    st.write(f"Kyle Prediction: {'Heart Disease' if prediction[0] else 'No Heart Disease'}")
     st.write(f"Probability of Heart Disease: {prediction_proba[0][1]:.2f}")
