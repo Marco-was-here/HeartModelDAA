@@ -28,38 +28,75 @@ def preprocess_input(data):
 # User input
 st.title("Heart Disease Prediction")
 st.write("Please input the following details to predict the likelihood of heart disease:")
+st.write("Marco Erlank | SMN45HWZ9")
 
-# Define the input fields
+
+
 age = st.number_input("Age", min_value=1, max_value=120, value=30)
-sex = st.selectbox("Sex (1 = Male, 0 = Female)", [1,0])
-cp = st.selectbox("Chest Pain Type", [1,2,3,4])
+
+# Sex: 1 = Male, 0 = Female
+sex_options = {"Male": 1, "Female": 0}
+sex = st.selectbox("Sex", list(sex_options.keys()))
+sex_value = sex_options[sex]
+
+# Chest Pain Type: 1, 2, 3, 4
+cp_options = {f"Type {i}": i for i in range(1, 5)}
+cp = st.selectbox("Chest Pain Type", list(cp_options.keys()))
+cp_value = cp_options[cp]
+
 trestbps = st.number_input("Resting Blood Pressure", min_value=80, max_value=200, value=120)
 chol = st.number_input("Serum Cholesterol", min_value=100, max_value=600, value=200)
-fbs = st.selectbox("Fasting Blood Sugar > 120 mg/dl", ["True", "False"])
-restecg = st.selectbox("Resting Electrocardiographic Results", ["Normal", "Having ST-T wave abnormality", "Showing probable or definite left ventricular hypertrophy"])
-thalach = st.number_input("Maximum Heart Rate Achieved", min_value=60, max_value=220, value=150)
-exang = st.selectbox("Exercise Induced Angina", ["Yes", "No"])
-oldpeak = st.number_input("ST Depression Induced by Exercise", min_value=0.0, max_value=10.0, value=1.0)
-slope = st.selectbox("Slope of the Peak Exercise ST Segment", ["Upsloping", "Flat", "Downsloping"])
-ca = st.number_input("Number of Major Vessels Colored by Fluoroscopy", min_value=0, max_value=3, value=0)
-thal = st.selectbox("Thalassemia", ["Normal", "Fixed Defect", "Reversible Defect"])
 
+# Fasting Blood Sugar > 120 mg/dl: 1 = True, 0 = False
+fbs_options = {"True": 1, "False": 0}
+fbs = st.selectbox("Fasting Blood Sugar > 120 mg/dl", list(fbs_options.keys()))
+fbs_value = fbs_options[fbs]
+
+# Resting Electrocardiographic Results
+restecg_options = {
+    "Normal": 0,
+    "Having ST-T wave abnormality": 1,
+    "Showing probable or definite left ventricular hypertrophy": 2
+}
+restecg = st.selectbox("Resting Electrocardiographic Results", list(restecg_options.keys()))
+restecg_value = restecg_options[restecg]
+
+thalach = st.number_input("Maximum Heart Rate Achieved", min_value=60, max_value=220, value=150)
+
+# Exercise Induced Angina: 1 = Yes, 0 = No
+exang_options = {"Yes": 1, "No": 0}
+exang = st.selectbox("Exercise Induced Angina", list(exang_options.keys()))
+exang_value = exang_options[exang]
+
+oldpeak = st.number_input("ST Depression Induced by Exercise", min_value=0.0, max_value=10.0, value=1.0)
+
+# Slope of the Peak Exercise ST Segment: 0 = Upsloping, 1 = Flat, 2 = Downsloping
+slope_options = {"Upsloping": 0, "Flat": 1, "Downsloping": 2}
+slope = st.selectbox("Slope of the Peak Exercise ST Segment", list(slope_options.keys()))
+slope_value = slope_options[slope]
+
+ca = st.number_input("Number of Major Vessels Colored by Fluoroscopy", min_value=0, max_value=3, value=0)
+
+# Thalassemia: 0 = Normal, 1 = Fixed Defect, 2 = Reversible Defect
+thal_options = {"Normal": 0, "Fixed Defect": 1, "Reversible Defect": 2}
+thal = st.selectbox("Thalassemia", list(thal_options.keys()))
+thal_value = thal_options[thal]
 
 # Create a DataFrame from user input
 input_data = pd.DataFrame({
     'age': [age],
-    'sex': [sex],
-    'cp': [cp],
+    'sex': [sex_value],
+    'cp': [cp_value],
     'trestbps': [trestbps],
     'chol': [chol],
-    'fbs': [fbs],
-    'restecg': [restecg],
+    'fbs': [fbs_value],
+    'restecg': [restecg_value],
     'thalach': [thalach],
-    'exang': [exang],
+    'exang': [exang_value],
     'oldpeak': [oldpeak],
-    'slope': [slope],
+    'slope': [slope_value],
     'ca': [ca],
-    'thal': [thal]
+    'thal': [thal_value]
 })
 
 # Preprocess the input data
