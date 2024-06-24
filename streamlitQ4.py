@@ -111,5 +111,5 @@ input_data = pd.DataFrame({
 if st.button("Predict"):
     prediction = model.predict(input_data)
     prediction_proba = model.predict_proba(input_data)
-    st.write(f"Kyle&Marco Prediction: {'Heart Disease' if prediction else 'No Heart Disease'}")
+    st.write(f"Prediction: {'❌ Heart Disease' if prediction else '😃 No Heart Disease'}")
     st.write(f"Probability of Heart Disease: {prediction_proba[0][1]:.2f}")
