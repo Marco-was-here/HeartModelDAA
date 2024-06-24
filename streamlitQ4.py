@@ -16,12 +16,10 @@ numerical_cols = ['age', 'trestbps', 'chol', 'thalach', 'oldpeak', 'ca']
 def preprocess_input(data):
     # Define the preprocessor
     preprocessor = ColumnTransformer(
-        transformers=[
+            transformers=[
             ('num', StandardScaler(), numerical_cols),
-            ('cat', OneHotEncoder(drop='first'), categorical_cols)
-        ],
-        remainder='passthrough'  # Handle columns not specified
-    )
+            ('cat', OneHotEncoder(), categorical_cols)
+        ])
     
     # Transform the input data
     processed_data = preprocessor.fit_transform(data)
