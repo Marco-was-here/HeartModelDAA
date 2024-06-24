@@ -105,12 +105,12 @@ input_data = pd.DataFrame({
 })
 
 # Preprocess the input data
-processed_input = preprocess_input(input_data)
+#processed_input = preprocess_input(input_data)
 
 # Make prediction
 if st.button("Predict"):
-    prediction = model.predict(processed_input)
-    prediction_proba = model.predict_proba(processed_input)
+    prediction = model.predict(input_data)
+    prediction_proba = model.predict_proba(input_data)
     classProbibility=prediction_proba[0][prediction]
-    st.write(f"Prediction: {'Heart Disease' if prediction[0] else 'No Heart Disease'}")
+    st.write(f"Prediction: {'Heart Disease' if prediction else 'No Heart Disease'}")
     st.write(f"Probability of Heart Disease: {classProbibility}")
