@@ -37,7 +37,7 @@ st.write("Marco Erlank | SMN45HWZ9")
 
 
 
-age = st.number_input("Age", min_value=1, max_value=120)
+age = st.number_input("Age", min_value=1, max_value=120, value=30)
 
 # Sex: 1 = Male, 0 = Female
 sex_options = {"Male": 1, "Female": 0}
