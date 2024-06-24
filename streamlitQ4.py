@@ -83,7 +83,7 @@ thal = st.selectbox("Thalassemia", list(thal_options.keys()))
 thal_value = thal_options[thal]
 
 # Create a DataFrame from user input      
-input_data = pd.DataFrame([
+input_data = pd.DataFrame(
     {'age': age,
     'sex': sex_value,
     'cp': cp_value,
@@ -96,7 +96,7 @@ input_data = pd.DataFrame([
     'oldpeak': oldpeak,
     'slope': slope_value,
     'ca': ca,
-    'thal': thal_value}])
+    'thal': thal_value})
 
 # Preprocess the input data
 processed_input = preprocess_input(input_data)
