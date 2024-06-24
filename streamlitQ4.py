@@ -84,19 +84,19 @@ thal_value = thal_options[thal]
 
 # Create a DataFrame from user input
 input_data = pd.DataFrame({
-    'age': [age],
-    'sex': [sex_value],
-    'cp': [cp_value],
-    'trestbps': [trestbps],
-    'chol': [chol],
-    'fbs': [fbs_value],
-    'restecg': [restecg_value],
-    'thalach': [thalach],
-    'exang': [exang_value],
-    'oldpeak': [oldpeak],
-    'slope': [slope_value],
-    'ca': [ca],
-    'thal': [thal_value]
+    'age': age,
+    'sex': sex_value,
+    'cp': cp_value,
+    'trestbps': trestbps,
+    'chol': chol,
+    'fbs': fbs_value,
+    'restecg': restecg_value,
+    'thalach': thalach,
+    'exang': exang_value,
+    'oldpeak': oldpeak,
+    'slope': slope_value,
+    'ca': ca,
+    'thal': thal_value
 })
 
 # Preprocess the input data
