@@ -82,8 +82,9 @@ thal_options = {"Normal": 0, "Fixed Defect": 1, "Reversible Defect": 2}
 thal = st.selectbox("Thalassemia", list(thal_options.keys()))
 thal_value = thal_options[thal]
 
-# Create a DataFrame from user input
-temp={'age': age,
+# Create a DataFrame from user input      
+input_data = pd.DataFrame([
+    {'age': age,
     'sex': sex_value,
     'cp': cp_value,
     'trestbps': trestbps,
@@ -95,9 +96,7 @@ temp={'age': age,
     'oldpeak': oldpeak,
     'slope': slope_value,
     'ca': ca,
-    'thal': thal_value}
-      
-input_data = pd.DataFrame([temp])
+    'thal': thal_value}])
 
 # Preprocess the input data
 processed_input = preprocess_input(input_data)
