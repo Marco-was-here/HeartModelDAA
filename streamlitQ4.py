@@ -41,7 +41,7 @@ age = st.number_input("Age", min_value=1, max_value=120, value=30)
 
 # Sex: 1 = Male, 0 = Female
 sex_options = {"Male": 1, "Female": 0}
-sex = st.selectbox("Sex", list(sex_options.keys()))
+sex = st.selectbox("Sex (Male = 1, Female = 0)", list(sex_options.keys()))
 sex_value = sex_options[sex]
 
 # Chest Pain Type: 1, 2, 3, 4
@@ -77,14 +77,14 @@ oldpeak = st.number_input("ST Depression Induced by Exercise", min_value=0.0, ma
 
 # Slope of the Peak Exercise ST Segment: 0 = Upsloping, 1 = Flat, 2 = Downsloping
 slope_options = {"Upsloping": 0, "Flat": 1, "Downsloping": 2}
-slope = st.selectbox("Slope of the Peak Exercise ST Segment", list(slope_options.keys()))
+slope = st.selectbox("Slope of the Peak Exercise ST Segment (0 = upsloping, 1 = flat, 2 = downsloping)", list(slope_options.keys()))
 slope_value = slope_options[slope]
 
 ca = st.number_input("Number of Major Vessels Colored by Fluoroscopy", min_value=0, max_value=3)
 
 # Thalassemia: 0 = Normal, 1 = Fixed Defect, 2 = Reversible Defect
-thal_options = {"Normal": 0, "Fixed Defect": 1, "Reversible Defect": 2}
-thal = st.selectbox("Thalassemia", list(thal_options.keys()))
+thal_options = {"Unknown": 0,"Normal": 1, "Fixed Defect": 2, "Reversible Defect": 3}
+thal = st.selectbox("Thalassemia (1 = normal,2 = fixed defect, 3 = reversible defect, 0 = unknown", list(thal_options.keys()))
 thal_value = thal_options[thal]
 
 # Create a DataFrame from user input      
