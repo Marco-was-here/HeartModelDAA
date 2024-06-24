@@ -14,16 +14,21 @@ numerical_cols = ['age', 'trestbps', 'chol', 'thalach', 'oldpeak', 'ca']
 
 # Function to preprocess user inputs
 def preprocess_input(data):
-    # Define the preprocessor
+    # Identify categorical and numerical columns
+    categorical_cols = data.select_dtypes(include=['object','category']).columns.tolist()
+    numerical_cols = data.select_dtypes(include=['number']).columns.tolist()
+
+    # Preprocessing pipeline
     preprocessor = ColumnTransformer(
-            transformers=[
+        transformers=[
             ('num', StandardScaler(), numerical_cols),
             ('cat', OneHotEncoder(), categorical_cols)
         ])
-    
-    # Transform the input data
-    processed_data = preprocessor.fit_transform(data)
-    return processed_data
+
+    # Apply preprocessing
+    processedData = preprocessor.fit_transform(data)
+    return processedData
+
 
 # User input
 st.title("Heart Disease Prediction")
@@ -106,5 +111,6 @@ processed_input = preprocess_input(input_data)
 if st.button("Predict"):
     prediction = model.predict(processed_input)
     prediction_proba = model.predict_proba(processed_input)
+    classProbibility=prediction_proba[0][prediction]
     st.write(f"Prediction: {'Heart Disease' if prediction[0] else 'No Heart Disease'}")
-    st.write(f"Probability of Heart Disease: {prediction_proba[0][1]:.2f}")
+    st.write(f"Probability of Heart Disease: {classProbibility}")
