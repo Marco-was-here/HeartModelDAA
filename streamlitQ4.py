@@ -31,8 +31,8 @@ st.write("Please input the following details to predict the likelihood of heart 
 
 # Define the input fields
 age = st.number_input("Age", min_value=1, max_value=120, value=30)
-sex = st.selectbox("Sex", ["Male", "Female"])
-cp = st.selectbox("Chest Pain Type", ["Type 1", "Type 2", "Type 3", "Type 4"])
+sex = st.selectbox("Sex (1 = Male, 0 = Female)", [1,0])
+cp = st.selectbox("Chest Pain Type", [1,2,3,4])
 trestbps = st.number_input("Resting Blood Pressure", min_value=80, max_value=200, value=120)
 chol = st.number_input("Serum Cholesterol", min_value=100, max_value=600, value=200)
 fbs = st.selectbox("Fasting Blood Sugar > 120 mg/dl", ["True", "False"])
